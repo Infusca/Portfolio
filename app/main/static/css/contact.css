@@ -1,0 +1,31 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+body{
+    margin: 20px;
+}
+
+header{
+    background-color: rgb(27, 27, 27);
+    color: antiquewhite;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+}
+
+li{
+    margin: 10px;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+a{
+    color: antiquewhite;
+    text-decoration: none;
+}

@@ -1,0 +1,75 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    margin: 20px;
+}
+
+header{
+    background-color: rgb(27, 27, 27);
+    color: antiquewhite;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+}
+
+li{
+    margin: 10px;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+a{
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+main{
+    margin: 0px;
+}
+
+.filters{
+    margin: 10px 0px;
+}
+
+.tags-list{
+    margin: 10px 0px;
+}
+
+input{
+    width: 100%;
+    border-radius: 5px;
+}
+
+button{
+    background-color: rgb(27, 27, 27);
+    color: antiquewhite;
+    border-radius: 5px;
+}
+
+.projects-list{
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+
+h2 a{
+    color: rgb(27,27,27);
+    margin: none;
+}
+
+.project{
+    border: 1px solid rgb(27, 27, 27);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(27, 27, 27);
+    padding: 20px;
+    line-height: 1;
+}
+
+p{
+    margin: none;
+}

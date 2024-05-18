@@ -1,0 +1,32 @@
+{% load static %} <!-- load static directory, allows reference to it below -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> {% block title %} Portfolio - Home {% endblock title %} </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block extrahead %}
+        {% endblock extrahead %}
+    </head>
+    <body>
+        
+        <header>
+            <ul class="nav-menu">
+                <li> <a href="/home">Home</a> </li>
+                <li> <a href="/contact">Contact</a> </li>
+            </ul>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+
+        {% block extra_js %}
+        {% endblock extra_js %}
+
+    </body>
+</html>
