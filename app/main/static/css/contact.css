@@ -12,9 +12,22 @@ header{
     color: antiquewhite;
 }
 
+main{
+    text-align: center;
+}
+
+main div{
+    margin: 50px;
+}
+
 ul{
     display: flex;
     list-style: none;
+}
+
+main ul{
+    justify-content: center;
+    padding: 0px;
 }
 
 li{
@@ -29,3 +42,38 @@ a{
     color: antiquewhite;
     text-decoration: none;
 }
+
+h1{
+    margin: 25px;
+}
+
+ hr{
+    width: 50%;
+ }
+
+ form{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+ }
+
+form div{
+    display: flex;
+    margin: 5px;
+}
+
+ label{
+    text-align: left;
+    margin: 5px;
+    width: 110px;
+ }
+
+ input{
+    width: 75%;
+    /* height: 200px; */
+ }
+
+ #message{
+    height: 200px;
+ }

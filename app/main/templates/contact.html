@@ -10,5 +10,30 @@
 {% endblock extrahead %}
 
 {% block content %}
-    <p> this is the contact page!
+    <h1> Contact </h1>
+
+    <div> 
+        <p> Nichola Holcomb </p>
+        <p> (860)966-6663 </p>
+        <p> Bluewater192@gmail.com </p>
+        <hr>
+        <ul>
+            <li> <a href="" target="_blank"><img src="/media/project_images/facebook.png" alt="facebook icon" /></a></li>
+            <li> <a href="https://instagram.com/infusca" target="_blank"><img src="/media/project_images/instagram.png" alt="instagram icon" /></a></li>
+            <li> <a href="https://www.linkedin.com/in/nichola-holcomb-008a28192/" target="_blank"><img src="/media/project_images/linkedin.png" alt="linked in icon" /></a></li>
+            <li> <a href="https://github.com/infusca" target="_blank"><img src="/media/project_images/github.png" alt="github icon" /></a></li>
+        </ul>
+    </div>
+
+    <div>
+        <form>
+            <div> <label for="fname"> First name: </label> <input type="text" id="fname" name="fname" value="First name"> </div>
+            <div> <label for="lname"> Last name: </label> <input type="text" id="lname" name="lname" value="Last name"> </div>
+            <div> <label for="email"> Email: </label> <input type="text" id="email" name="email" value="Email"> </div>
+            <div> <label for="message"> Message: </label> <input type="text" id="message" name="message" value=""> </div>
+        </form>
+    </div>
+
+    <div> <a href="https://www.flaticon.com/icons"  target="_blank"> Social media icons created by Freepik - Flaticon</a> </div>
+        
 {% endblock content %}
