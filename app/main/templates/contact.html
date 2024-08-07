@@ -26,11 +26,14 @@
     </div>
 
     <div>
-        <form>
-            <div> <label for="fname"> First name: </label> <input type="text" id="fname" name="fname" value="First name"> </div>
+        <form method="POST">
+            {% csrf_token %}
+            {% comment %} <div> <label for="fname"> First name: </label> <input type="text" id="fname" name="fname" value="First name"> </div>
             <div> <label for="lname"> Last name: </label> <input type="text" id="lname" name="lname" value="Last name"> </div>
             <div> <label for="email"> Email: </label> <input type="text" id="email" name="email" value="Email"> </div>
-            <div> <label for="message"> Message: </label> <input type="text" id="message" name="message" value=""> </div>
+            <div> <label for="message"> Message: </label> <input type="text" id="message" name="message" value="Your message."> </div> {% endcomment %}
+            {{ form.as_p }}
+            <button type="submit"> Submit </button>
         </form>
     </div>
 
