@@ -32,6 +32,8 @@ a{
 
 main{
     text-align: center;
+    width: 80%;
+    margin: auto;
 }
 
 main a{
