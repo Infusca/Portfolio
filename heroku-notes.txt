@@ -1,0 +1,30 @@
+DEPLOYING WITH HEROKU
+0. settings.py -> make sure DEBUG is set to False
+    -> make sure ALLOWED_HOSTS is set to heroku app domain:
+        ie. ALLOWED_HOSTS = ['https://coding-portfolio-3d0c3b2282c9.herokuapp.com/']
+    -> make sure STATIC_ROOT is set:
+        ie. STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+1. log into heroku (browser)
+    -> create app in browser
+2. initialize git repo (git init), or update current repo
+3. heroku git:remote -a name-of-heroku-app
+4. deploy app -> commit code to repo and deploy it to Heroku using Git
+    git add .
+    git commit -am "..."
+    git push heroku main
+
+heroku apps -> get list of herkou apps
+heroku info --app name-of-app -> get info on app including domain
+
+So also to get this to work i needed to do the following:
+
+pip install gunicorn -> a WSGI http server for python web apps
+- add it to requirements.txt
+create Procfile: (no extension; in folder with manage.py)
+    web: gunicorn project-name.wsgi --log-file - (project-name should be the folder with settings.py)
+    
+heroku run bash -> get in bash shell to see file setup of heroku
+heroku run python app/manage.py migrate (otherwise heroku is looking for app/manage.py instead of app/app/manage.py)
+
+still wasn't working but closer...
+
