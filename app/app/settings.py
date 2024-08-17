@@ -30,7 +30,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ['https://coding-portfolio-3d0c3b2282c9.herokuapp.com/']
 # ALLOWED_HOSTS = ['coding-portfolio.herokuapp.com', 'localhost']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['coding-portfolio.herokuapp.com']
 
 
 # Application definition
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+# This will allow Heroku to automatically configure your database using the PostgreSQL add-on that Heroku provides.
+# ( instead of SQLLite which it is currently using, fine for development but not production )
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': BASE_DIR / 'mydb.sqlite3',
+    'default': { dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
 }
 
@@ -124,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 django_heroku.settings(locals())
 
 # Default primary key field type
