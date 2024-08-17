@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # This will allow Heroku to automatically configure your database using the PostgreSQL add-on that Heroku provides.
 # ( instead of SQLLite which it is currently using, fine for development but)
 DATABASES = {
-    'default': { dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
-}
+
 
 
 # Password validation
