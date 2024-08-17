@@ -1,7 +1,8 @@
 DEPLOYING WITH HEROKU
 0. settings.py -> make sure DEBUG is set to False
     -> make sure ALLOWED_HOSTS is set to heroku app domain:
-        ie. ALLOWED_HOSTS = ['https://coding-portfolio-3d0c3b2282c9.herokuapp.com/']
+        ie. ALLOWED_HOSTS = ['https://coding-portfolio-3d0c3b2282c9.herokuapp.com/'] https://coding-portolio/herokuapp.com
+        ALLOWED_HOSTS = [*] - can use this; allows all hosts
     -> make sure STATIC_ROOT is set:
         ie. STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 1. log into heroku (browser)
