@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
 
 # import django_heroku
 # import dj_database_url
@@ -23,11 +22,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+# Support env variables from .env file if defined
+import os
+from dotenv import load_dotenv
+env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
+load_dotenv(env_path)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-#%78sp)be6g464&)qwp6$f8tno&8tsjf@9_uqo^4qi0w+e10%e'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-#%78sp)be6g464&)qwp6$f8tno&8tsjf@9_uqo^4qi0w+e10%e')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
 
 # ALLOWED_HOSTS = ['https://coding-portfolio-3d0c3b2282c9.herokuapp.com/']
 # ALLOWED_HOSTS = ['coding-portfolio.herokuapp.com', 'localhost']
@@ -48,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,13 +91,21 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': BASE_DIR / 'mydb.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#         'NAME': BASE_DIR / 'mydb.sqlite3',
+#     }
+# }
+
+import dj_database_url
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=500, # makes request persistent rather than recreating connection every request cycle
+        conn_health_checks=True
+    )
 
 # This will allow Heroku to automatically configure your database using the PostgreSQL add-on that Heroku provides.
 # ( instead of SQLLite which it is currently using, fine for development but)
@@ -131,8 +149,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # django_heroku.settings(locals())
@@ -158,3 +177,12 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'your_email@example.com'
 # EMAIL_HOST_PASSWORD = 'your_email_password'
+
+# static file serving
+# reduce size of static files when serving (more efficient)
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
