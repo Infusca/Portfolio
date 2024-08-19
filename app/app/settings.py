@@ -41,8 +41,9 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 # ALLOWED_HOSTS = ['https://coding-portfolio-3d0c3b2282c9.herokuapp.com/']
 # ALLOWED_HOSTS = ['coding-portfolio.herokuapp.com', 'localhost']
 # ALLOWED_HOSTS = ['coding-portfolio.herokuapp.com']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://infusca.pythonanywhere.com']
 
 # Application definition
 
