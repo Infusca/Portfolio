@@ -101,11 +101,18 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 import dj_database_url
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.config(
+# if 'DATABASE_URL' in os.environ:
+#     DATABASES['default'] = dj_database_url.config(
+#         conn_max_age=500, # makes request persistent rather than recreating connection every request cycle
+#         conn_health_checks=True
+#     )
+DATABASES = {
+    'default' = dj_database_url.config(
         conn_max_age=500, # makes request persistent rather than recreating connection every request cycle
         conn_health_checks=True
     )
+}
+    
 
 # This will allow Heroku to automatically configure your database using the PostgreSQL add-on that Heroku provides.
 # ( instead of SQLLite which it is currently using, fine for development but)
